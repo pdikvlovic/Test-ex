@@ -34,8 +34,12 @@ class MessageResponse:
         if today: r.setToday()
         elif tmrw: r.setTmrw()
         else: r.setDate(day, month)
-        self.response = f'Weather forecast for {r.getDate()} in Yaroslavl\n\n' \
-                        f'Temperature: {r.choice["temp"]} °C\n' \
-                        f'Relative Humidity: {r.choice["rh"]} %\n' \
-                        f'Pressure: {r.choice["pres"]} mmHg\n' \
-                        f'Probability of precipitation: {r.choice["pop"]} %'
+
+        if r.choice:
+            self.response = f'Weather forecast for {r.getDate()} in Yaroslavl\n\n' \
+                            f'Temperature: {r.choice["temp"]} °C\n' \
+                            f'Relative Humidity: {r.choice["rh"]} %\n' \
+                            f'Pressure: {r.choice["pres"]} mmHg\n' \
+                            f'Probability of precipitation: {r.choice["pop"]} %'
+        else:
+            self.response = 'Wrong data. Please enter any date within 15 days from today.'

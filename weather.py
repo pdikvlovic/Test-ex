@@ -35,7 +35,7 @@ class WeatherResponse:
             choice = self.__incYear(choice)
 
         if (choice - self.__today) > self.__limit:
-            self.choice = 'Wrong data'
+            return
         else:
             self.choice = self.__weather[choice]
 
